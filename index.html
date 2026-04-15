@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html class="dark" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>MUHAMAD RIVALDI | Web Developer</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+              "tertiary-fixed-dim": "#3daafa",
+              "surface-dim": "#0b0f0f",
+              "tertiary": "#61b7ff",
+              "tertiary-container": "#3daafa",
+              "on-background": "#fafdfc",
+              "primary-dim": "#43e2d2",
+              "primary-container": "#0cc9b9",
+              "on-surface-variant": "#a8acab",
+              "surface-container-high": "#1b2121",
+              "primary": "#56f1e0",
+              "on-secondary-container": "#d0d0d0",
+              "on-secondary-fixed-variant": "#5b5b5b",
+              "on-primary": "#00574f",
+              "on-secondary": "#525252",
+              "surface-container": "#151b1a",
+              "on-surface": "#fafdfc",
+              "on-primary-container": "#003a35",
+              "inverse-on-surface": "#525656",
+              "on-tertiary-fixed-variant": "#003c61",
+              "secondary-container": "#474747",
+              "error": "#ff716c",
+              "tertiary-dim": "#35a5f4",
+              "secondary-dim": "#d4d4d4",
+              "surface-tint": "#56f1e0",
+              "on-primary-fixed-variant": "#006159",
+              "surface-container-low": "#101414",
+              "primary-fixed-dim": "#43e2d2",
+              "error-container": "#9f0519",
+              "on-tertiary-fixed": "#00192d",
+              "error-dim": "#d7383b",
+              "background": "#0b0f0f",
+              "surface-container-highest": "#212727",
+              "surface-bright": "#272d2d",
+              "tertiary-fixed": "#61b7ff",
+              "secondary-fixed": "#e2e2e2",
+              "surface": "#0b0f0f",
+              "inverse-primary": "#006b62",
+              "secondary-fixed-dim": "#d4d4d4",
+              "outline-variant": "#454948",
+              "on-tertiary-container": "#002742",
+              "on-tertiary": "#003353",
+              "inverse-surface": "#f7faf9",
+              "on-secondary-fixed": "#3f3f3f",
+              "on-error": "#490006",
+              "outline": "#727676",
+              "surface-variant": "#212727",
+              "surface-container-lowest": "#000000",
+              "secondary": "#e2e2e2",
+              "on-primary-fixed": "#00423c",
+              "primary-fixed": "#56f1e0",
+              "on-error-container": "#ffa8a3"
+            },
+            "borderRadius": {
+              "DEFAULT": "0.125rem",
+              "lg": "0.25rem",
+              "xl": "0.5rem",
+              "full": "0.75rem"
+            },
+            "fontFamily": {
+              "headline": ["Space Grotesk"],
+              "body": ["Manrope"],
+              "label": ["Space Grotesk"]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+      body {
+        background-color: #0b0f0f;
+        color: #fafdfc;
+        font-family: 'Manrope', sans-serif;
+        overflow-x: hidden;
+      }
+      .neon-glow {
+        text-shadow: 0 0 10px rgba(86, 241, 224, 0.5), 0 0 20px rgba(86, 241, 224, 0.3);
+      }
+      .glass-panel {
+        background: rgba(21, 27, 26, 0.7);
+        backdrop-filter: blur(24px);
+      }
+      .tech-grid {
+        background-image: radial-gradient(circle at 2px 2px, rgba(86, 241, 224, 0.05) 1px, transparent 0);
+        background-size: 40px 40px;
+      }
+
+      /* ── Animated Background Orbs ── */
+      #bg-canvas {
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        z-index: 0;
+        overflow: hidden;
+      }
+      .orb {
+        position: absolute;
+        border-radius: 50%;
+        filter: blur(90px);
+        opacity: 0;
+      }
+      .orb-1 {
+        width: 600px; height: 600px;
+        background: radial-gradient(circle, rgba(86,241,224,0.18) 0%, rgba(86,241,224,0.04) 60%, transparent 100%);
+        top: 10%; left: -10%;
+      }
+      .orb-2 {
+        width: 500px; height: 500px;
+        background: radial-gradient(circle, rgba(97,183,255,0.14) 0%, rgba(97,183,255,0.03) 60%, transparent 100%);
+        top: 50%; right: -8%;
+      }
+      .orb-3 {
+        width: 400px; height: 400px;
+        background: radial-gradient(circle, rgba(86,241,224,0.10) 0%, rgba(12,201,185,0.03) 60%, transparent 100%);
+        bottom: 10%; left: 30%;
+      }
+
+      /* ── Shooting Stars Canvas ── */
+      #stars-canvas {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      /* ── Hero Text Animations ── */
+      .hero-badge { opacity: 0; transform: translateY(20px); }
+      .hero-title { opacity: 0; transform: translateY(40px); clip-path: inset(0 0 100% 0); }
+      .hero-subtitle { opacity: 0; transform: translateY(30px); }
+      .hero-btns { opacity: 0; transform: translateY(25px); }
+      .hero-scroll { opacity: 0; }
+
+      /* ── Scroll Reveal (bidirectional) ── */
+      .reveal {
+        opacity: 0;
+        transform: translateY(50px);
+        will-change: opacity, transform;
+      }
+      .reveal-left {
+        opacity: 0;
+        transform: translateX(-50px);
+        will-change: opacity, transform;
+      }
+      .reveal-right {
+        opacity: 0;
+        transform: translateX(50px);
+        will-change: opacity, transform;
+      }
+      .reveal-scale {
+        opacity: 0;
+        transform: scale(0.85);
+        will-change: opacity, transform;
+      }
+
+      /* ── Timeline Glow Line ── */
+      .timeline-line {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 8rem;
+        bottom: 0;
+        width: 2px;
+        background: linear-gradient(to bottom, #56f1e0 0%, rgba(12,201,185,0.15) 60%, transparent 100%);
+        overflow: hidden;
+      }
+      .timeline-line::after {
+        content: '';
+        position: absolute;
+        top: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 2px;
+        height: 80px;
+        background: linear-gradient(to bottom, transparent, #56f1e0, #b0fff8, #56f1e0, transparent);
+        animation: scanline 3s ease-in-out infinite;
+        box-shadow: 0 0 8px 2px rgba(86,241,224,0.8), 0 0 20px 4px rgba(86,241,224,0.4);
+        border-radius: 9999px;
+      }
+      @keyframes scanline {
+        0%   { top: -80px; opacity: 0; }
+        10%  { opacity: 1; }
+        90%  { opacity: 1; }
+        100% { top: 100%; opacity: 0; }
+      }
+
+      /* ── Timeline Dot Pulse ── */
+      .timeline-dot-glow {
+        position: relative;
+      }
+      .timeline-dot-glow::before {
+        content: '';
+        position: absolute;
+        inset: -6px;
+        border-radius: 50%;
+        background: rgba(86,241,224,0.15);
+        animation: dotpulse 2.5s ease-in-out infinite;
+      }
+      @keyframes dotpulse {
+        0%, 100% { transform: scale(1); opacity: 0.6; }
+        50% { transform: scale(1.7); opacity: 0; }
+      }
+
+      /* ── Skill Card Hover Glow ── */
+      .skill-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+      }
+      .skill-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        box-shadow: 0 0 30px rgba(86,241,224,0.2), 0 0 60px rgba(86,241,224,0.08);
+      }
+
+      /* ── Nav Scroll Effect ── */
+      nav {
+        transition: background 0.4s ease, backdrop-filter 0.4s ease, box-shadow 0.4s ease;
+      }
+      nav.scrolled {
+        background: rgba(11,15,15,0.95) !important;
+        box-shadow: 0 1px 0 rgba(86,241,224,0.08);
+      }
+
+      /* ── Project Card Hover ── */
+      .project-card-main {
+        transition: box-shadow 0.4s ease;
+      }
+      .project-card-main:hover {
+        box-shadow: 0 0 40px rgba(86,241,224,0.12), 0 0 80px rgba(86,241,224,0.05);
+      }
+
+      /* ── Contact Glow Pulse ── */
+      .contact-glow-pulse {
+        animation: contactpulse 5s ease-in-out infinite;
+      }
+      @keyframes contactpulse {
+        0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: 0.5; }
+        50% { transform: translate(-50%, -50%) scale(1.15); opacity: 0.8; }
+      }
+
+      /* ── Floating particles ── */
+      .particle {
+        position: fixed;
+        width: 2px;
+        height: 2px;
+        border-radius: 50%;
+        background: rgba(86,241,224,0.6);
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* ── Project Vault Carousel ── */
+      #project-vault {
+        perspective: 1200px;
+      }
+
+      .project-slide {
+        position: absolute;
+        inset: 0;
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
+        will-change: transform, opacity;
+      }
+
+      .project-slide-wrapper {
+        position: relative;
+        width: 100%;
+        min-height: 700px;
+        overflow: hidden;
+      }
+
+      /* ── Carousel Nav Buttons ── */
+      .carousel-btn {
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .carousel-btn::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(86,241,224,0.08);
+        transform: translateX(-100%);
+        transition: transform 0.4s ease;
+      }
+      .carousel-btn:hover::before {
+        transform: translateX(0);
+      }
+      .carousel-btn:hover {
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(86,241,224,0.25);
+      }
+      .carousel-btn:active {
+        transform: scale(0.97);
+      }
+
+      /* ── Slide indicator dots ── */
+      .slide-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: rgba(86,241,224,0.2);
+        border: 1px solid rgba(86,241,224,0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      .slide-dot.active {
+        background: #56f1e0;
+        box-shadow: 0 0 10px rgba(86,241,224,0.6);
+        width: 24px;
+        border-radius: 4px;
+      }
+
+      /* ── 3D flip transition classes ── */
+      @keyframes slideOut3D {
+        0%   { transform: perspective(1200px) rotateY(0deg) translateZ(0px); opacity: 1; }
+        100% { transform: perspective(1200px) rotateY(-90deg) translateZ(-80px); opacity: 0; }
+      }
+      @keyframes slideIn3D {
+        0%   { transform: perspective(1200px) rotateY(90deg) translateZ(-80px); opacity: 0; }
+        100% { transform: perspective(1200px) rotateY(0deg) translateZ(0px); opacity: 1; }
+      }
+      @keyframes slideOutReverse3D {
+        0%   { transform: perspective(1200px) rotateY(0deg) translateZ(0px); opacity: 1; }
+        100% { transform: perspective(1200px) rotateY(90deg) translateZ(-80px); opacity: 0; }
+      }
+      @keyframes slideInReverse3D {
+        0%   { transform: perspective(1200px) rotateY(-90deg) translateZ(-80px); opacity: 0; }
+        100% { transform: perspective(1200px) rotateY(0deg) translateZ(0px); opacity: 1; }
+      }
+
+      .slide-exit-forward {
+        animation: slideOut3D 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      .slide-enter-forward {
+        animation: slideIn3D 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+        opacity: 0;
+      }
+      .slide-exit-backward {
+        animation: slideOutReverse3D 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      }
+      .slide-enter-backward {
+        animation: slideInReverse3D 0.5s cubic-bezier(0.4, 0, 0.2, 1) 0.1s forwards;
+        opacity: 0;
+      }
+    </style>
+</head>
+<body class="tech-grid">
+
+  <!-- Shooting Stars Canvas -->
+  <canvas id="stars-canvas"></canvas>
+
+  <!-- Animated Background Orbs -->
+  <div id="bg-canvas" aria-hidden="true">
+    <div class="orb orb-1" id="orb1"></div>
+    <div class="orb orb-2" id="orb2"></div>
+    <div class="orb orb-3" id="orb3"></div>
+  </div>
+
+  <!-- TopNavBar -->
+  <nav id="main-nav" class="fixed top-0 w-full z-50 bg-[#0b0f0f]/70 backdrop-blur-xl flex justify-between items-center px-12 py-6 max-w-full font-space-grotesk tracking-tighter">
+    <div class="text-2xl font-bold tracking-widest text-cyan-400 drop-shadow-[0_0_8px_rgba(86,241,224,0.4)]">MY PORTFOLIO</div>
+    <div class="hidden md:flex gap-8 items-center">
+      <a class="text-cyan-400 border-b-2 border-cyan-400 pb-1 hover:text-cyan-300 transition-colors duration-300" href="#">Home</a>
+      <a class="text-gray-400 hover:text-cyan-300 transition-colors duration-300" href="#about">About</a>
+      <a class="text-gray-400 hover:text-cyan-300 transition-colors duration-300" href="#experience">Experience</a>
+      <a class="text-gray-400 hover:text-cyan-300 transition-colors duration-300" href="#projects">Projects</a>
+    </div>
+    <button class="bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold px-6 py-2 rounded-lg hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(86,241,224,0.3)]">Get in Touch</button>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="min-h-screen flex flex-col justify-center items-center px-6 pt-24 relative overflow-hidden" style="z-index:1;">
+    <div class="z-10 text-center max-w-5xl">
+      <span class="hero-badge font-label text-primary tracking-[0.4em] uppercase text-sm mb-6 block">Available for projects</span>
+      <h1 class="hero-title font-headline text-6xl md:text-8xl font-bold tracking-tighter text-secondary mb-4 leading-none" id="hero-title-text">Fullstack Developer</h1>
+      <p class="hero-subtitle font-headline text-2xl md:text-4xl text-on-surface-variant font-light tracking-tight mb-8">Muhamad Rivaldi</p>
+      <div class="hero-btns flex gap-6 justify-center">
+        <button class="bg-gradient-to-r from-primary to-primary-container text-on-primary font-bold px-8 py-4 rounded-xl shadow-[0_0_25px_rgba(86,241,224,0.4)] hover:scale-105 transition-transform">Explore Vault</button>
+        <button class="border border-outline-variant/30 text-secondary font-bold px-8 py-4 rounded-xl hover:bg-primary/10 transition-all">Download CV</button>
+      </div>
+    </div>
+    <div class="hero-scroll absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
+      <span class="text-[0.6rem] tracking-widest text-on-surface-variant uppercase">Scroll to enter</span>
+      <div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="py-32 px-6 md:px-24 bg-surface-container-low relative" id="about" style="z-index:1;">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="md:col-span-2 space-y-8 reveal-left">
+        <div class="inline-block px-4 py-1 rounded-full bg-surface-container-highest border border-outline-variant/20 text-xs font-label tracking-widest text-primary uppercase">Identity</div>
+        <h2 class="font-headline text-5xl font-bold text-secondary">Crafting Digital <br>Infrastructures.</h2>
+        <p class="font-body text-xl text-on-surface-variant leading-relaxed max-w-2xl">
+          As a Software Engineering (Rekayasa Perangkat Lunak) graduate from SMK, I specialize in building robust, scalable web architectures. My approach blends technical precision with modern aesthetics, ensuring every line of code serves a larger purpose.
+        </p>
+      </div>
+      <div class="reveal-right bg-surface-container rounded-3xl p-8 border border-outline-variant/10 flex flex-col justify-end relative overflow-hidden group">
+        <div class="absolute top-0 right-0 p-8 text-primary/20 group-hover:text-primary/50 transition-colors">
+          <span class="material-symbols-outlined text-6xl" style="font-variation-settings:'FILL' 1;">terminal</span>
+        </div>
+        <h3 class="font-headline text-2xl font-bold text-secondary mb-2">Technical Background</h3>
+        <p class="font-body text-sm text-on-surface-variant">Vocational High School Major in Software Engineering. Focused on logic, architecture, and high-performance applications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-32 px-6 md:px-24 bg-surface-dim relative" style="z-index:1;">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex justify-between items-end mb-16 reveal">
+        <div>
+          <h2 class="font-headline text-4xl font-bold text-secondary mb-4">Core Competencies</h2>
+          <p class="font-body text-on-surface-variant">My weapon of choice for building the modern web.</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-5 gap-4">
+        <div class="skill-card p-8 bg-surface-container rounded-2xl border border-outline-variant/5 flex flex-col items-center justify-center gap-4 cursor-default reveal-scale">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all">
+            <span class="material-symbols-outlined">api</span>
+          </div>
+          <span class="font-label font-bold text-secondary">LARAVEL</span>
+        </div>
+        <div class="skill-card p-8 bg-surface-container rounded-2xl border border-outline-variant/5 flex flex-col items-center justify-center gap-4 cursor-default reveal-scale">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all">
+            <span class="material-symbols-outlined">palette</span>
+          </div>
+          <span class="font-label font-bold text-secondary">TAILWIND</span>
+        </div>
+        <div class="skill-card p-8 bg-surface-container rounded-2xl border border-outline-variant/5 flex flex-col items-center justify-center gap-4 cursor-default reveal-scale">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all">
+            <span class="material-symbols-outlined">javascript</span>
+          </div>
+          <span class="font-label font-bold text-secondary">JAVASCRIPT</span>
+        </div>
+        <div class="skill-card p-8 bg-surface-container rounded-2xl border border-outline-variant/5 flex flex-col items-center justify-center gap-4 cursor-default reveal-scale">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all">
+            <span class="material-symbols-outlined">database</span>
+          </div>
+          <span class="font-label font-bold text-secondary">MYSQL</span>
+        </div>
+        <div class="skill-card p-8 bg-surface-container rounded-2xl border border-outline-variant/5 flex flex-col items-center justify-center gap-4 cursor-default reveal-scale">
+          <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary transition-all">
+            <span class="material-symbols-outlined">grid_view</span>
+          </div>
+          <span class="font-label font-bold text-secondary">BOOTSTRAP</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section class="py-32 px-6 md:px-24 bg-surface-container-low overflow-hidden relative" id="experience" style="z-index:1;">
+    <div class="max-w-4xl mx-auto relative">
+      <h2 class="font-headline text-4xl font-bold text-secondary mb-20 text-center reveal">Development Journey</h2>
+
+      <!-- Animated Timeline Line -->
+      <div class="timeline-line" id="timeline-line"></div>
+
+      <div class="space-y-32">
+
+        <!-- Timeline Item 1 -->
+        <div class="relative flex justify-between items-center w-full timeline-item-left">
+          <div class="w-[45%] text-right pr-8">
+            <span class="font-label text-primary tracking-widest text-xs">2023 — PRESENT</span>
+            <h4 class="font-headline text-xl font-bold text-secondary mt-2">Freelance Web Developer</h4>
+            <p class="text-sm text-on-surface-variant mt-2 leading-relaxed">Designing and deploying bespoke web solutions for local enterprises with a focus on automation and clean architecture.</p>
+          </div>
+          <div class="timeline-dot-glow absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary shadow-[0_0_15px_rgba(86,241,224,0.8)] z-10 border-4 border-surface-container-low"></div>
+          <div class="w-[45%]"></div>
+        </div>
+
+        <!-- Timeline Item 2 -->
+        <div class="relative flex justify-between items-center w-full timeline-item-right">
+          <div class="w-[45%]"></div>
+          <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary/40 shadow-[0_0_15px_rgba(86,241,224,0.3)] z-10 border-4 border-surface-container-low"></div>
+          <div class="w-[45%] text-left pl-8">
+            <span class="font-label text-primary tracking-widest text-xs">2021 — 2023</span>
+            <h4 class="font-headline text-xl font-bold text-secondary mt-2">Software Engineering Student</h4>
+            <p class="text-sm text-on-surface-variant mt-2 leading-relaxed">Intensive training in SMK focusing on Rekayasa Perangkat Lunak. Built the foundation of programming logic, database management, and system design.</p>
+          </div>
+        </div>
+
+        <!-- Timeline Item 3 -->
+        <div class="relative flex justify-between items-center w-full timeline-item-left">
+          <div class="w-[45%] text-right pr-8">
+            <span class="font-label text-primary tracking-widest text-xs">2022</span>
+            <h4 class="font-headline text-xl font-bold text-secondary mt-2">Industrial Internship</h4>
+            <p class="text-sm text-on-surface-variant mt-2 leading-relaxed">Collaborated with tech teams to maintain legacy systems while implementing modern frontend frameworks for internal tools.</p>
+          </div>
+          <div class="absolute left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary/20 shadow-[0_0_15px_rgba(86,241,224,0.2)] z-10 border-4 border-surface-container-low"></div>
+          <div class="w-[45%]"></div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Project Vault -->
+  <section class="py-32 px-6 md:px-24 bg-surface-dim relative" id="projects" style="z-index:1;">
+    <div class="max-w-7xl mx-auto">
+      <!-- Header with nav -->
+      <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 reveal gap-6">
+        <div>
+          <h2 class="font-headline text-5xl font-bold text-secondary tracking-tighter">Project Vault</h2>
+          <p class="font-body text-on-surface-variant mt-2">Curated works & deployed solutions.</p>
+        </div>
+       
+      </div>
+
+      <!-- Carousel Wrapper -->
+      <div id="project-vault" class="project-slide-wrapper">
+
+        <!-- SLIDE 1 -->
+        <div class="project-slide" id="slide-0">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- Main Featured Project -->
+            <div class="project-card-main md:col-span-8 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 aspect-video md:aspect-auto md:h-[600px]">
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent z-10"></div>
+              <img alt="Billing System" class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnfKpD3zN2O4qgur5s7B1y1dcaRhTFkSeohkILEAm56aBdcqfHxqudVUudORzvYrxKzuLeEzwu8kLcBxiiD307pAyS8a_oIwkxtnfOPVdmh1uAmgEfVRVB5Zgxo4Qoee1Ppw4kzo9519k5JYUVM_XOr06icVKdwHWFO6ZN8XYW-SfmXPALkETKZtVCw8Vvs9a4EZvh8bBNAgk9Tfz9pJz6jdtCnjV_7hp24llhVT-qB_g0A70TW3Gmngz2Jl7TSs9v69fHbBRQrUv_">
+              <div class="absolute bottom-0 left-0 p-10 z-20 w-full">
+                <span class="font-label text-primary text-xs tracking-widest uppercase mb-4 block">Utility &amp; Infrastructure</span>
+                <h3 class="font-headline text-3xl md:text-4xl font-bold text-secondary mb-4 leading-tight">Internal Billing &amp; Meter <br>Recording System</h3>
+                <p class="font-body text-on-surface-variant max-w-xl mb-6">A custom-built enterprise solution for Regional Utilities to automate meter readings, synchronize billing cycles, and manage customer data with high integrity.</p>
+                <div class="flex gap-3 flex-wrap">
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">Laravel</span>
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">MySQL</span>
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">Tailwind</span>
+                </div>
+              </div>
+            </div>
+            <!-- Secondary Projects -->
+            <div class="md:col-span-4 flex flex-col gap-8">
+              <div class="flex-1 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 p-8 flex flex-col justify-end min-h-[280px]">
+                <div class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary transition-all duration-500">
+                  <span class="material-symbols-outlined text-4xl">school</span>
+                </div>
+                <h4 class="font-headline text-xl font-bold text-secondary mb-2">Online Course Platform</h4>
+                <p class="font-body text-xs text-on-surface-variant mb-4">A seamless learning management system with progress tracking and course distribution modules.</p>
+                <a class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all" href="#">View Source <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+              </div>
+              <div class="flex-1 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 p-8 flex flex-col justify-end min-h-[280px]">
+                <div class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary transition-all duration-500">
+                  <span class="material-symbols-outlined text-4xl">shopping_bag</span>
+                </div>
+                <h4 class="font-headline text-xl font-bold text-secondary mb-2">E-commerce Website</h4>
+                <p class="font-body text-xs text-on-surface-variant mb-4">Fullstack retail engine featuring product management, cart logic, and payment gateway simulation.</p>
+                <a class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all" href="#">View Source <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 2 -->
+        <div class="project-slide" id="slide-1" style="opacity:0;pointer-events:none;">
+          <div class="grid grid-cols-1 md:grid-cols-12 gap-8">
+            <!-- Main Featured Project -->
+            <div class="project-card-main md:col-span-8 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 aspect-video md:aspect-auto md:h-[600px]">
+              <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent z-10"></div>
+              <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-tertiary/5 z-0"></div>
+              <!-- Placeholder visual for slide 2 -->
+              <div class="absolute inset-0 flex items-center justify-center" style="background: linear-gradient(135deg, #0cc9b9/10 0%, #0b0f0f 50%, #61b7ff/10 100%);">
+                <div class="text-center opacity-20">
+                  <span class="material-symbols-outlined text-[8rem] text-primary" style="font-variation-settings:'FILL' 0;">dashboard</span>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 p-10 z-20 w-full">
+                <span class="font-label text-tertiary text-xs tracking-widest uppercase mb-4 block">Analytics &amp; Data</span>
+                <h3 class="font-headline text-3xl md:text-4xl font-bold text-secondary mb-4 leading-tight">Real-Time Dashboard<br>& Analytics Platform</h3>
+                <p class="font-body text-on-surface-variant max-w-xl mb-6">An interactive business intelligence tool featuring live data visualization, KPI tracking, and automated reporting for mid-scale enterprises.</p>
+                <div class="flex gap-3 flex-wrap">
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">Vue.js</span>
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">Laravel</span>
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">Chart.js</span>
+                  <span class="px-3 py-1 bg-surface-container-highest/80 backdrop-blur rounded text-[10px] font-label text-secondary uppercase border border-outline-variant/20 tracking-tighter">MySQL</span>
+                </div>
+              </div>
+            </div>
+            <!-- Secondary Projects -->
+            <div class="md:col-span-4 flex flex-col gap-8">
+              <div class="flex-1 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 p-8 flex flex-col justify-end min-h-[280px]">
+                <div class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary transition-all duration-500">
+                  <span class="material-symbols-outlined text-4xl">inventory_2</span>
+                </div>
+                <h4 class="font-headline text-xl font-bold text-secondary mb-2">Inventory Management</h4>
+                <p class="font-body text-xs text-on-surface-variant mb-4">Smart stock tracking system with barcode scanning, low-stock alerts, and automated purchase order generation.</p>
+                <a class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all" href="#">View Source <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+              </div>
+              <div class="flex-1 group relative overflow-hidden rounded-3xl bg-surface-container border border-outline-variant/10 p-8 flex flex-col justify-end min-h-[280px]">
+                <div class="absolute top-0 right-0 p-8 text-primary/10 group-hover:text-primary transition-all duration-500">
+                  <span class="material-symbols-outlined text-4xl">qr_code_scanner</span>
+                </div>
+                <h4 class="font-headline text-xl font-bold text-secondary mb-2">Attendance & QR System</h4>
+                <p class="font-body text-xs text-on-surface-variant mb-4">Digital attendance tracking using QR code generation, real-time verification, and exportable reports for institutions.</p>
+                <a class="text-primary font-label text-xs uppercase tracking-widest flex items-center gap-2 hover:gap-3 transition-all" href="#">View Source <span class="material-symbols-outlined text-sm">arrow_outward</span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+ <!-- Carousel Controls -->
+ <div class="flex items-center mt-3 justify-end gap-4">
+    <!-- Slide Dots -->
+    <div class="flex items-center gap-2" id="slide-dots">
+      <div class="slide-dot active" data-slide="0"></div>
+      <div class="slide-dot" data-slide="1"></div>
+    </div>
+    <!-- Prev / Next Buttons -->
+    <button id="btn-prev" class="carousel-btn border border-outline-variant/20 bg-surface-container text-secondary rounded-xl px-5 py-3 flex items-center gap-2 font-label text-sm tracking-widest uppercase">
+      <span class="material-symbols-outlined text-base">arrow_back</span>
+      Prev
+    </button>
+    <button id="btn-next" class="carousel-btn border border-primary/40 bg-primary/10 text-primary rounded-xl px-5 py-3 flex items-center gap-2 font-label text-sm tracking-widest uppercase shadow-[0_0_15px_rgba(86,241,224,0.15)]">
+      Next
+      <span class="material-symbols-outlined text-base">arrow_forward</span>
+    </button>
+  </div>
+      </div>
+      <!-- End Carousel Wrapper -->
+
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="py-40 px-6 md:px-24 bg-surface-container-lowest relative overflow-hidden" style="z-index:1;">
+    <div class="absolute inset-0 pointer-events-none">
+      <div class="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
+      <div class="contact-glow-pulse absolute top-1/2 left-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]"></div>
+    </div>
+    <div class="max-w-4xl mx-auto text-center relative z-10">
+      <h2 class="font-headline text-5xl md:text-7xl font-bold text-secondary mb-8 tracking-tighter reveal">Ready to initiate?</h2>
+      <p class="font-body text-xl text-on-surface-variant mb-12 max-w-2xl mx-auto reveal">Looking for a fullstack developer to bring your digital architectural vision to life. Let's discuss your next project.</p>
+      <div class="flex flex-col md:flex-row gap-6 justify-center reveal">
+        <a class="group flex items-center justify-center gap-4 bg-primary text-on-primary font-bold px-10 py-5 rounded-2xl shadow-[0_0_30px_rgba(86,241,224,0.3)] hover:scale-105 transition-all" href="mailto:contact@muhamadrivaldi.dev">
+          <span class="material-symbols-outlined" style="font-variation-settings:'FILL' 1;">send</span>
+          Initiate Contact
+        </a>
+        <div class="flex gap-4 justify-center">
+          <a class="w-16 h-16 rounded-2xl bg-surface-container border border-outline-variant/10 flex items-center justify-center text-secondary hover:bg-surface-bright transition-all" href="#">
+            <span class="material-symbols-outlined">link</span>
+          </a>
+          <a class="w-16 h-16 rounded-2xl bg-surface-container border border-outline-variant/10 flex items-center justify-center text-secondary hover:bg-surface-bright transition-all" href="#">
+            <span class="material-symbols-outlined">code</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="w-full py-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center px-12 gap-8 bg-[#000000]" style="position:relative;z-index:1;">
+    <div class="font-manrope text-xs tracking-[0.2em] uppercase text-gray-600">
+      © 2026  Muhammad Rivaldi. ALL RIGHTS RESERVED.
+    </div>
+    <div class="flex gap-8">
+      <a class="font-manrope text-xs tracking-[0.2em] uppercase text-gray-600 hover:text-cyan-400 transition-all duration-500 opacity-80 hover:opacity-100" href="#">Twitter</a>
+      <a class="font-manrope text-xs tracking-[0.2em] uppercase text-gray-600 hover:text-cyan-400 transition-all duration-500 opacity-80 hover:opacity-100" href="#">GitHub</a>
+      <a class="font-manrope text-xs tracking-[0.2em] uppercase text-gray-600 hover:text-cyan-400 transition-all duration-500 opacity-80 hover:opacity-100" href="#">LinkedIn</a>
+    </div>
+  </footer>
+
+  <script>
+  // ─────────────────────────────────────────────
+  // 1. SHOOTING STARS (Canvas)
+  // ─────────────────────────────────────────────
+  (function initShootingStars() {
+    var canvas = document.getElementById('stars-canvas');
+    var ctx = canvas.getContext('2d');
+    var stars = [];
+    var shootingStars = [];
+    var w, h;
+
+    function resize() {
+      w = canvas.width = window.innerWidth;
+      h = canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    // Static background stars
+    for (var i = 0; i < 200; i++) {
+      stars.push({
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        r: Math.random() * 1.2 + 0.3,
+        a: Math.random() * 0.7 + 0.1,
+        flicker: Math.random() * Math.PI * 2
+      });
+    }
+
+    // Shooting star constructor
+    function createShootingStar() {
+      var angle = (Math.random() * 30 + 20) * Math.PI / 180;
+      var speed = Math.random() * 6 + 4;
+      return {
+        x: Math.random() * w * 1.5 - w * 0.25,
+        y: Math.random() * h * 0.5 - 50,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed,
+        len: Math.random() * 120 + 60,
+        alpha: 1,
+        width: Math.random() * 1.5 + 0.5,
+        trail: []
+      };
+    }
+
+    // Spawn shooting stars at intervals
+    function spawnStar() {
+      if (shootingStars.length < 4) {
+        shootingStars.push(createShootingStar());
+      }
+      setTimeout(spawnStar, Math.random() * 2500 + 800);
+    }
+    spawnStar();
+
+    var tick = 0;
+    function draw() {
+      ctx.clearRect(0, 0, w, h);
+      tick++;
+
+      // Draw static stars
+      for (var i = 0; i < stars.length; i++) {
+        var s = stars[i];
+        var alpha = s.a * (0.7 + 0.3 * Math.sin(tick * 0.02 + s.flicker));
+        ctx.beginPath();
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(200, 255, 248, ' + alpha + ')';
+        ctx.fill();
+      }
+
+      // Draw shooting stars
+      for (var j = shootingStars.length - 1; j >= 0; j--) {
+        var ss = shootingStars[j];
+
+        // Trail
+        ss.trail.push({ x: ss.x, y: ss.y, a: ss.alpha });
+        if (ss.trail.length > 20) ss.trail.shift();
+
+        // Draw trail
+        for (var k = 0; k < ss.trail.length - 1; k++) {
+          var t0 = ss.trail[k];
+          var t1 = ss.trail[k + 1];
+          var progress = k / ss.trail.length;
+          var trailAlpha = progress * ss.alpha * 0.6;
+
+          var grad = ctx.createLinearGradient(t0.x, t0.y, t1.x, t1.y);
+          grad.addColorStop(0, 'rgba(86, 241, 224, 0)');
+          grad.addColorStop(1, 'rgba(200, 255, 248, ' + trailAlpha + ')');
+
+          ctx.beginPath();
+          ctx.moveTo(t0.x, t0.y);
+          ctx.lineTo(t1.x, t1.y);
+          ctx.strokeStyle = grad;
+          ctx.lineWidth = ss.width * progress;
+          ctx.stroke();
+        }
+
+        // Draw head glow
+        var headGrad = ctx.createRadialGradient(ss.x, ss.y, 0, ss.x, ss.y, 3);
+        headGrad.addColorStop(0, 'rgba(255, 255, 255, ' + ss.alpha + ')');
+        headGrad.addColorStop(0.5, 'rgba(86, 241, 224, ' + ss.alpha * 0.6 + ')');
+        headGrad.addColorStop(1, 'rgba(86, 241, 224, 0)');
+        ctx.beginPath();
+        ctx.arc(ss.x, ss.y, 2.5, 0, Math.PI * 2);
+        ctx.fillStyle = headGrad;
+        ctx.fill();
+
+        // Move
+        ss.x += ss.vx;
+        ss.y += ss.vy;
+        ss.alpha -= 0.015;
+
+        // Remove if done
+        if (ss.alpha <= 0 || ss.x > w + 200 || ss.y > h + 200) {
+          shootingStars.splice(j, 1);
+        }
+      }
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  })();
+
+  // ─────────────────────────────────────────────
+  // 2. ANIMATED BACKGROUND ORBS (Anime.js)
+  // ─────────────────────────────────────────────
+  (function initOrbs() {
+    anime({ targets: '.orb', opacity: 1, duration: 2000, easing: 'easeOutQuad' });
+
+    anime({
+      targets: '#orb1',
+      translateX: ['-10%', '5%', '-5%', '-10%'],
+      translateY: ['0%', '8%', '-5%', '0%'],
+      duration: 18000,
+      easing: 'easeInOutSine',
+      loop: true,
+      direction: 'alternate'
+    });
+
+    anime({
+      targets: '#orb2',
+      translateX: ['0%', '-12%', '5%', '0%'],
+      translateY: ['0%', '-10%', '6%', '0%'],
+      duration: 22000,
+      easing: 'easeInOutSine',
+      loop: true,
+      direction: 'alternate'
+    });
+
+    anime({
+      targets: '#orb3',
+      translateX: ['0%', '8%', '-6%', '0%'],
+      translateY: ['0%', '-12%', '5%', '0%'],
+      scale: [1, 1.15, 0.95, 1],
+      duration: 14000,
+      easing: 'easeInOutSine',
+      loop: true,
+      direction: 'alternate'
+    });
+  })();
+
+  // ─────────────────────────────────────────────
+  // 3. HERO ENTRANCE (GSAP Timeline)
+  // ─────────────────────────────────────────────
+  window.addEventListener('load', function() {
+    gsap.registerPlugin(ScrollTrigger);
+
+    var heroTl = gsap.timeline({ delay: 0.3 });
+
+    heroTl
+      .to('.hero-badge', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' })
+      .to('#hero-title-text', { opacity: 1, y: 0, clipPath: 'inset(0 0 0% 0)', duration: 1.1, ease: 'power4.out' }, '-=0.2')
+      .to('.hero-subtitle', { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+      .to('.hero-btns', { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4')
+      .to('.hero-scroll', { opacity: 1, duration: 1, ease: 'power2.out' }, '-=0.3');
+
+    // ─────────────────────────────────────────────
+    // 4. BIDIRECTIONAL SCROLL REVEAL
+    //    toggleActions: 'play reverse play reverse'
+    //    → animates IN scrolling down, OUT scrolling up
+    // ─────────────────────────────────────────────
+
+    gsap.utils.toArray('.reveal').forEach(function(el, i) {
+      gsap.fromTo(el,
+        { opacity: 0, y: 50 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          delay: i * 0.05,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            end: 'top 30%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-left').forEach(function(el) {
+      gsap.fromTo(el,
+        { opacity: 0, x: -50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            end: 'top 25%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-right').forEach(function(el, i) {
+      gsap.fromTo(el,
+        { opacity: 0, x: 50 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 1,
+          ease: 'power3.out',
+          delay: i * 0.1,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 85%',
+            end: 'top 25%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.reveal-scale').forEach(function(el, i) {
+      gsap.fromTo(el,
+        { opacity: 0, scale: 0.85 },
+        {
+          opacity: 1,
+          scale: 1,
+          duration: 0.7,
+          ease: 'back.out(1.5)',
+          delay: i * 0.08,
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 90%',
+            end: 'top 25%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────
+    // 5. TIMELINE ITEMS (Bidirectional)
+    // ─────────────────────────────────────────────
+    gsap.utils.toArray('.timeline-item-left').forEach(function(el) {
+      gsap.fromTo(el,
+        { opacity: 0, x: -60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            end: 'top 20%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    gsap.utils.toArray('.timeline-item-right').forEach(function(el) {
+      gsap.fromTo(el,
+        { opacity: 0, x: 60 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: {
+            trigger: el,
+            start: 'top 80%',
+            end: 'top 20%',
+            toggleActions: 'play reverse play reverse'
+          }
+        }
+      );
+    });
+
+    // ─────────────────────────────────────────────
+    // 6. PARALLAX on bg orbs
+    // ─────────────────────────────────────────────
+    gsap.to('#orb1', {
+      yPercent: -30,
+      ease: 'none',
+      scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 2 }
+    });
+    gsap.to('#orb2', {
+      yPercent: -50,
+      ease: 'none',
+      scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 3 }
+    });
+    gsap.to('#orb3', {
+      yPercent: -20,
+      ease: 'none',
+      scrollTrigger: { trigger: 'body', start: 'top top', end: 'bottom bottom', scrub: 1.5 }
+    });
+
+    ScrollTrigger.refresh();
+  });
+
+  // ─────────────────────────────────────────────
+  // 7. NAV scroll effect
+  // ─────────────────────────────────────────────
+  window.addEventListener('scroll', function() {
+    var nav = document.getElementById('main-nav');
+    if (window.scrollY > 60) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+  });
+
+  // ─────────────────────────────────────────────
+  // 8. FLOATING PARTICLES
+  // ─────────────────────────────────────────────
+  (function spawnParticles() {
+    var count = 18;
+    for (var i = 0; i < count; i++) {
+      (function() {
+        var p = document.createElement('div');
+        p.className = 'particle';
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = Math.random() * 100 + 'vh';
+        p.style.opacity = (Math.random() * 0.5 + 0.1).toFixed(2);
+        p.style.width = (Math.random() * 2 + 1) + 'px';
+        p.style.height = p.style.width;
+        document.body.appendChild(p);
+
+        anime({
+          targets: p,
+          translateX: function() { return (Math.random() - 0.5) * 200 + 'px'; },
+          translateY: function() { return (Math.random() * -300 - 100) + 'px'; },
+          opacity: [{ value: parseFloat(p.style.opacity) }, { value: 0 }],
+          duration: Math.random() * 8000 + 6000,
+          delay: Math.random() * 5000,
+          easing: 'easeOutQuad',
+          loop: true,
+          complete: function() {
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.top = (80 + Math.random() * 20) + 'vh';
+          }
+        });
+      })();
+    }
+  })();
+
+  // ─────────────────────────────────────────────
+  // 9. PROJECT CAROUSEL with 3D Transition
+  // ─────────────────────────────────────────────
+  (function initCarousel() {
+    var currentSlide = 0;
+    var totalSlides = 2;
+    var isAnimating = false;
+
+    var slides = [
+      document.getElementById('slide-0'),
+      document.getElementById('slide-1')
+    ];
+    var btnNext = document.getElementById('btn-next');
+    var btnPrev = document.getElementById('btn-prev');
+    var dots = document.querySelectorAll('.slide-dot');
+    var vault = document.getElementById('project-vault');
+
+    function updateDots(idx) {
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === idx);
+      });
+    }
+
+    function getSlideHeight(slide) {
+      slide.style.opacity = '0';
+      slide.style.pointerEvents = 'auto';
+      var h = slide.offsetHeight;
+      slide.style.opacity = '';
+      slide.style.pointerEvents = 'none';
+      return h;
+    }
+
+    function goToSlide(newIdx, direction) {
+      if (isAnimating || newIdx === currentSlide) return;
+      isAnimating = true;
+
+      var oldSlide = slides[currentSlide];
+      var newSlide = slides[newIdx];
+
+      // Determine animation class names
+      var exitClass = direction === 'forward' ? 'slide-exit-forward' : 'slide-exit-backward';
+      var enterClass = direction === 'forward' ? 'slide-enter-forward' : 'slide-enter-backward';
+
+      // Set vault height to current slide height to prevent jump
+      vault.style.minHeight = oldSlide.offsetHeight + 'px';
+
+      // Show new slide underneath (hidden, positioned)
+      newSlide.style.opacity = '0';
+      newSlide.style.pointerEvents = 'none';
+
+      // Apply exit animation to old slide
+      oldSlide.classList.add(exitClass);
+
+      // Start enter animation slightly delayed
+      setTimeout(function() {
+        newSlide.style.position = 'relative';
+        newSlide.classList.add(enterClass);
+
+        oldSlide.style.position = 'absolute';
+        oldSlide.style.top = '0';
+        oldSlide.style.left = '0';
+        oldSlide.style.width = '100%';
+      }, 50);
+
+      // Clean up after animation
+      setTimeout(function() {
+        // Hide old slide
+        oldSlide.classList.remove(exitClass);
+        oldSlide.style.opacity = '0';
+        oldSlide.style.pointerEvents = 'none';
+        oldSlide.style.position = 'absolute';
+
+        // Show new slide
+        newSlide.classList.remove(enterClass);
+        newSlide.style.opacity = '1';
+        newSlide.style.pointerEvents = 'auto';
+        newSlide.style.position = 'relative';
+
+        vault.style.minHeight = '';
+
+        currentSlide = newIdx;
+        updateDots(currentSlide);
+        isAnimating = false;
+      }, 700);
+    }
+
+    // Next button
+    btnNext.addEventListener('click', function() {
+      var nextIdx = (currentSlide + 1) % totalSlides;
+      goToSlide(nextIdx, 'forward');
+    });
+
+    // Prev button
+    btnPrev.addEventListener('click', function() {
+      var prevIdx = (currentSlide - 1 + totalSlides) % totalSlides;
+      goToSlide(prevIdx, 'backward');
+    });
+
+    // Dot navigation
+    dots.forEach(function(dot) {
+      dot.addEventListener('click', function() {
+        var targetIdx = parseInt(this.getAttribute('data-slide'));
+        var dir = targetIdx > currentSlide ? 'forward' : 'backward';
+        goToSlide(targetIdx, dir);
+      });
+    });
+
+    // Init: ensure slide 0 visible, slide 1 hidden absolutely
+    slides[0].style.opacity = '1';
+    slides[0].style.pointerEvents = 'auto';
+    slides[0].style.position = 'relative';
+
+    slides[1].style.opacity = '0';
+    slides[1].style.pointerEvents = 'none';
+    slides[1].style.position = 'absolute';
+    slides[1].style.top = '0';
+    slides[1].style.left = '0';
+    slides[1].style.width = '100%';
+  })();
+  </script>
+</body>
+</html>

@@ -452,29 +452,42 @@
         <!-- Ambient Internal Glow -->
         <div class="absolute -top-24 -right-24 w-80 h-80 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div class="max-w-3xl space-y-4">
-          <div class="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase depth-layer-mid mb-1">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            <span>Flagship Big Project &bull; Core Banking Gateway</span>
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4">
+            <div class="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-emerald-400 uppercase depth-layer-mid mb-1">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              <span>Flagship Big Project &bull; Core Banking Gateway</span>
+            </div>
+
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight depth-layer-mid">
+              Integrasi Jalur Core API Perbankan
+            </h2>
+
+            <p class="text-zinc-300 text-sm sm:text-base leading-relaxed depth-layer-low">
+              Infrastruktur gateway pembayaran resmi yang menghubungkan sistem penagihan publik ke jaringan core perbankan. Mengotomasi pelunasan tagihan seketika (1 detik) dengan standar keamanan OWASP dan rekonsiliasi kas nol selisih.
+            </p>
+
+            <div class="pt-2 depth-layer-high flex flex-wrap items-center gap-3">
+              <button onclick="openModal('bank_api')" class="magnetic-btn px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs tracking-tight transition-all flex items-center gap-2 shadow-[0_10px_25px_rgba(16,185,129,0.25)]">
+                <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
+                <span>Detail Spesifikasi Sistem</span>
+              </button>
+              <span class="text-[11px] font-mono text-zinc-500 flex items-center gap-1.5">
+                <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
+                <span>Enterprise SLA 99.98% &bull; NDA Compliant</span>
+              </span>
+            </div>
           </div>
 
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white tracking-tight leading-tight depth-layer-mid">
-            Integrasi Jalur Core API Perbankan
-          </h2>
-
-          <p class="text-zinc-300 text-sm sm:text-base leading-relaxed depth-layer-low">
-            Infrastruktur gateway pembayaran resmi yang menghubungkan sistem penagihan publik ke jaringan core perbankan. Mengotomasi pelunasan tagihan seketika (1 detik) dengan standar keamanan OWASP dan rekonsiliasi kas nol selisih.
-          </p>
-
-          <div class="pt-2 depth-layer-high flex flex-wrap items-center gap-3">
-            <button onclick="openModal('bank_api')" class="magnetic-btn px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs tracking-tight transition-all flex items-center gap-2 shadow-[0_10px_25px_rgba(16,185,129,0.25)]">
-              <i data-lucide="file-code" class="w-3.5 h-3.5"></i>
-              <span>Detail Spesifikasi Sistem</span>
-            </button>
-            <span class="text-[11px] font-mono text-zinc-500 flex items-center gap-1.5">
-              <i data-lucide="lock" class="w-3.5 h-3.5 text-emerald-400"></i>
-              <span>Enterprise SLA 99.98% &bull; NDA Compliant</span>
-            </span>
+          <div class="lg:col-span-5">
+            <div class="w-full aspect-[16/10] rounded-2xl overflow-hidden border border-emerald-500/30 bg-zinc-900 group/spot relative shadow-2xl depth-layer-high cursor-pointer" onclick="openModal('bank_api')">
+              <img src="assets/bank-api-mockup.jpg" alt="Core Banking Gateway Telemetry &amp; Logs" class="w-full h-full object-cover object-center group-hover/spot:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[10px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-zinc-950/90 border border-emerald-500/30 text-emerald-400">Core Banking API</span>
+                <span class="text-zinc-400 flex items-center gap-1"><i data-lucide="maximize-2" class="w-3 h-3 text-emerald-400"></i>Lihat Detail</span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -558,6 +571,16 @@
               </span>
               <span class="text-emerald-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/bank-api-mockup.jpg" alt="Integrasi Jalur Core API Perbankan" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Core Banking Gateway
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Integrasi Jalur Core API Perbankan &amp; Gateway Finansial</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Proyek infrastruktur finansial strategis berskala besar terhubung ke core perbankan. Berstandar audit OWASP &amp; Burp Suite, pelunasan 1 detik, kebal replay attack, dan rekonsiliasi nol selisih.
@@ -587,6 +610,16 @@
               <span class="text-sky-400 font-semibold text-xs">Enterprise BUMD</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-sky-400"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/billing-mockup.jpg" alt="Regional Water Utility Central Billing Core" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Billing &amp; Invoicing Core
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Regional Water Utility Central Billing Core</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Sistem tagihan utilitas publik yang lolos uji penetrasi OWASP ZAP, Burp Suite &amp; sqlmap. Kebal multi-vektor SQLi &amp; XSS, serta cetak massal 22k+ data (mPDF chunking).
@@ -616,6 +649,16 @@
               <span class="text-sky-400 font-semibold text-xs">Biometric AI</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-sky-400"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/biometric-mockup.jpg" alt="Public Enterprise Biometric Attendance &amp; HRD" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Biometric AI &amp; Face Recognition
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Public Enterprise Biometric Attendance &amp; HRD</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Absensi biometrik adaptif (MobileFaceNet + FIFO 20 buffer). Endpoint API diuji via OWASP ZAP &amp; Burp Suite dengan validasi geofence server-side anti-fake GPS.
@@ -756,6 +799,16 @@
               <span class="text-sky-400 font-semibold text-xs">Field Telemetry</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-sky-400"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/cater-meter-mockup.jpg" alt="Water Meter Inspection &amp; Sync Platform" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Field Telemetry Inspection
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Water Meter Inspection &amp; Sync Platform</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Inspeksi telemetri lapangan via Pure API Proxy &amp; Dynamic VPN terenkripsi. Integritas berkas SQLite offline anti-tampering (OWASP tested).
@@ -785,6 +838,16 @@
               <span class="text-sky-400 font-semibold text-xs">Security Matrix</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-sky-400"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/terameter-mockup.jpg" alt="Terameter Enterprise Role &amp; Access Matrix" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                RBAC Security Matrix
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Terameter Enterprise Role &amp; Access Matrix</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Sentral tata kelola server utilitas. Matriks RBAC berjenjang lolos uji privilege escalation (Burp Suite tested), Content Security Policy (CSP), dan HSTS.
@@ -814,6 +877,16 @@
               <span class="text-sky-400 font-semibold text-xs">Document Vault</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-sky-400"></i><span>Privasi Terjaga &bull; NDA</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/suma-suka-mockup.jpg" alt="Suma Suka Official Document &amp; Mail Archiving" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Document Archiving Vault
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Suma Suka Official Document &amp; Mail Archiving</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Arsip naskah dinas berkerahasiaan tinggi dengan proteksi XSS/CSRF, sanitasi upload berkas anti-arbitrary code, dan CAPTCHA anti-tampering (OWASP hardened).
@@ -843,6 +916,16 @@
               <span class="text-teal-400 font-semibold text-xs">Web GIS &bull; Satellite &bull; Disaster</span>
               <span class="text-zinc-400 text-[10px] flex items-center gap-1"><i data-lucide="lock" class="w-3 h-3 text-teal-400"></i><span>Privasi Terjaga &bull; Proprietary</span></span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/volcano-gis-mockup.jpg" alt="Volcano Eruption &amp; Wildfire GIS Platform" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Volcano &amp; Wildfire GIS
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Volcano Eruption &amp; Wildfire GIS Platform (GeoGuard)</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Sistem Web GIS pemantauan erupsi gunung berapi, anomali titik api satelit NASA VIIRS, serta simulasi dinamis sebaran abu vulkanik dan asap berbasis angin.
@@ -951,6 +1034,16 @@
               <span class="text-sky-400 font-semibold text-xs">Hosting Platform</span>
               <span class="text-emerald-400 text-[10px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live Website</span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/aksihost-mockup.png" alt="Aksihost Hosting & Domain Platform" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Commercial Cloud Platform
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Aksihost Hosting, Domain &amp; VPS Platform</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Platform layanan hosting, pencarian registrasi domain, katalog server VPS, dan alur checkout pembelian pelanggan otomatis.
@@ -976,6 +1069,16 @@
               <span class="text-sky-400 font-semibold text-xs">E-Learning Platform</span>
               <span class="text-emerald-400 text-[10px] flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>Live Website</span>
             </div>
+
+            <!-- Project Mockup Preview -->
+            <div class="w-full aspect-[16/10] rounded-xl overflow-hidden border border-white/10 mb-3.5 bg-zinc-900 group/img relative shadow-md depth-layer-mid">
+              <img src="assets/pkbm-mockup.png" alt="PKBM Triwala E-Learning Platform" class="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500">
+              <div class="absolute inset-0 bg-gradient-to-t from-zinc-950/70 via-transparent to-transparent pointer-events-none"></div>
+              <span class="absolute bottom-2 left-2 text-[10px] font-mono px-2 py-0.5 rounded bg-zinc-950/80 border border-white/10 text-zinc-300">
+                Education LMS Portal
+              </span>
+            </div>
+
             <h3 class="font-bold text-base text-white mb-2 leading-snug depth-layer-mid">Online Course Platform PKBM Triwala</h3>
             <p class="text-zinc-400 text-xs leading-relaxed mb-4 depth-layer-low">
               Sistem manajemen pembelajaran daring terpusat untuk materi pelajaran, pengumpulan tugas, grading siswa, dan manajemen kelas.
@@ -2137,6 +2240,7 @@
       bank_api: {
         category: 'FLAGSHIP BIG PROJECT // STANDAR CORE BANKING & OWASP',
         title: 'Integrasi Jalur Core API Perbankan & Gateway Finansial (Flagship Big Project)',
+        image: 'assets/bank-api-mockup.jpg',
         desc: 'Proyek strategis utama berskala besar (mission-critical big project) yang menghubungkan sistem penagihan massal ribuan pelanggan langsung ke jaringan server core perbankan mitra. Mengotomasi proses pelunasan seketika 1 detik, mengamankan perputaran kas publik bernilai tinggi, dan lolos uji penetrasi perbankan menyeluruh (OWASP API Top 10, Burp Suite, sqlmap).',
         highlights: [
           'Proyek skala besar (mission-critical) yang menjadi tulang punggung perputaran kas dan pelunasan billing publik otomatis.',
@@ -2152,6 +2256,7 @@
       aksihost: {
         category: 'HOSTING & CLOUD INFRASTRUCTURE // WEB PLATFORM',
         title: 'Aksihost Hosting, Domain & VPS Platform',
+        image: 'assets/aksihost-mockup.png',
         desc: 'Platform komersial terpadu penyedia layanan web hosting, registrasi domain, katalog server VPS, dan alur checkout pembayaran pelanggan otomatis.',
         highlights: [
           'Pencarian dan pengecekan ketersediaan domain secara real-time dengan pemilihan variasi ekstensi TLD.',
@@ -2164,6 +2269,7 @@
       pkbm: {
         category: 'E-LEARNING & LMS // EDUCATION PLATFORM',
         title: 'Online Course & E-Learning Platform PKBM Triwala',
+        image: 'assets/pkbm-mockup.png',
         desc: 'Sistem manajemen pembelajaran daring terpusat untuk sebuah institusi pendidikan, memfasilitasi materi kurikulum, tugas siswa, penilaian otomatis, dan media pembelajaran.',
         highlights: [
           'Pengorganisasian kurikulum dan materi belajar daring terstruktur berdasarkan tingkatan jenjang pendidikan.',
@@ -2176,6 +2282,7 @@
       billing: {
         category: 'ENTERPRISE PUBLIC UTILITY // OWASP HARDENED',
         title: 'Regional Water Utility Central Billing & Invoicing Engine',
+        image: 'assets/billing-mockup.jpg',
         desc: 'Sistem operasional dan finansial inti untuk entitas utilitas air publik daerah. Mengelola klasifikasi tarif pelanggan, perhitungan rekening bulanan, dan pelaporan audit resmi dengan standar hardening tingkat tinggi.',
         highlights: [
           'Lolos uji penetrasi dinamis multi-vektor menggunakan OWASP ZAP, Burp Suite, dan sqlmap: 100% kebal terhadap SQL Injection (Blind/Error/Union), XSS (Stored/Reflected), dan Broken Access Control.',
@@ -2189,6 +2296,7 @@
       cater: {
         category: 'FIELD TELEMETRY & SYNC // REGIONAL UTILITY',
         title: 'Water Meter Inspection & Offline Synchronization Platform',
+        image: 'assets/cater-meter-mockup.jpg',
         desc: 'Sistem inspeksi petugas pembaca meter lapangan yang terhubung ke server billing pusat. Mendukung pengambilan foto meter, kerja offline SQLite di HP Android, dan validasi koordinat GPS pelanggan.',
         highlights: [
           'Arsitektur Pure API Proxy di Cater untuk komunikasi terisolasi langsung ke Billing tanpa redundansi basis data.',
@@ -2202,6 +2310,7 @@
       terameter: {
         category: 'SECURITY & GOVERNANCE // UTILITY ADMIN',
         title: 'Terameter Enterprise Role Matrix & Access Administration',
+        image: 'assets/terameter-mockup.jpg',
         desc: 'Lapisan tata kelola hak akses dan pengamanan server terpusat untuk aplikasi operasional utilitas publik daerah.',
         highlights: [
           'Matriks RBAC dinamis multi-tingkat (GodAdmin, SuperAdmin, Staf Departemen) lolos uji audit privilege escalation via Burp Suite.',
@@ -2214,6 +2323,7 @@
       absensi: {
         category: 'BIOMETRIC AI & HR // PUBLIC SECTOR',
         title: 'Public Enterprise Biometric Attendance & Staff Management',
+        image: 'assets/biometric-mockup.jpg',
         desc: 'Platform manajemen kehadiran pegawai dengan verifikasi biometrik wajah dan validasi radius lokasi anti-fake GPS.',
         highlights: [
           'Sistem Self-Adaptive Biometric Face Recognition dengan buffer rolling FIFO 20 untuk akurasi embedding wajah MobileFaceNet.',
@@ -2226,6 +2336,7 @@
       sumasuka: {
         category: 'MUNICIPAL DOCUMENT ARCHIVE // SECURITY',
         title: 'Suma Suka Official Document & Letter Archiving System',
+        image: 'assets/suma-suka-mockup.jpg',
         desc: 'Sistem arsip naskah dinas dan persuratan resmi institusi dengan proteksi keamanan terintegrasi tingkat tinggi.',
         highlights: [
           'Penyelarasan CAPTCHA anti-tampering terpadu lintas aplikasi untuk mematikan bot otomatisasi surat.',
@@ -2281,6 +2392,7 @@
       fireguard: {
         category: 'WEB GIS & DISASTER TELEMETRY // NEXT.JS',
         title: 'Volcano Eruption & Wildfire Early-Warning GIS Platform (GeoGuard)',
+        image: 'assets/volcano-gis-mockup.jpg',
         desc: 'Platform Web GIS pemantauan aktivitas erupsi gunung berapi, anomali termal titik api satelit NASA VIIRS-NPP 375m, serta simulasi trajektori animasi sebaran abu vulkanik dan asap berbasis vektor arah angin permukaan.',
         highlights: [
           'Pemantauan status erupsi gunung berapi aktif dan pemetaan zonasi radius bahaya geologis interaktif.',
